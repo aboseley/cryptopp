@@ -70,11 +70,7 @@ endif()
 set(LIB_VER ${cryptopp_VERSION_MAJOR}${cryptopp_VERSION_MINOR}${cryptopp_VERSION_PATCH})
 
 # Only set when cross-compiling, http://www.vtk.org/Wiki/CMake_Cross_Compiling
-if (NOT (CMAKE_SYSTEM_VERSION AND CMAKE_SYSTEM_PROCESSOR))
-	set(CRYPTOPP_CROSS_COMPILE 1)
-else()
-	set(CRYPTOPP_CROSS_COMPILE 0)
-endif()
+set(CRYPTOPP_CROSS_COMPILE ${CMAKE_CROSSCOMPILING})
 
 # Don't use RPATH's. The resulting binary could fail a security audit.
 if (NOT CMAKE_VERSION VERSION_LESS 2.8.12)
